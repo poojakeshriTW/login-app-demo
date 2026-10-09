@@ -6,7 +6,7 @@
 
 **Status**: Draft
 
-**Input**: User description: "Develop a retail application login page with email and password fields, a show/hide password option, a prominent Login button, password recovery and registration links, clear validation messages, and a responsive, user-friendly layout for desktop and mobile."
+**Input**: User description: "Develop a retail application login page with email and password fields, a show/hide password option, a prominent Login button, password recovery and registration links, clear validation messages, and a responsive, user-friendly layout for desktop and mobile. Update the existing specification to include a Remember Me checkbox to retain user login preferences; preserve all existing requirements and functionality."
 
 ## User Scenarios & Testing *(mandatory)*
 
@@ -83,6 +83,34 @@ and verify all controls remain visible and usable.
    **When** the customer uses the form, **Then** its content and controls remain
    readable, visible, and operable without unintended horizontal scrolling.
 
+---
+
+### User Story 4 - Remember This Device (Priority: P2)
+
+A returning customer can choose Remember Me to stay signed in on the device
+they are using, so they do not need to enter their credentials again on their
+next visit.
+
+**Why this priority**: Remembering the sign-in on a customer's device reduces
+repeated effort while remaining an optional choice.
+
+**Independent Test**: Select Remember Me and sign in successfully; verify the
+customer remains signed in on a later visit on that device. Repeat without
+selecting it and verify the customer is asked to sign in again after the
+standard session ends.
+
+**Acceptance Scenarios**:
+
+1. **Given** the login page is open, **When** a customer selects Remember Me
+   and signs in successfully, **Then** the customer remains signed in on that
+   device for subsequent visits.
+2. **Given** the login page is open, **When** a customer leaves Remember Me
+   unselected and signs in successfully, **Then** the standard sign-in session
+   applies without extended sign-in persistence.
+3. **Given** a customer selects Remember Me, **When** authentication fails,
+   **Then** the customer is not signed in or given a persistent authenticated
+   session.
+
 ### Edge Cases
 
 - If one or both required fields are empty, identify the missing field or
@@ -95,6 +123,11 @@ and verify all controls remain visible and usable.
   that sign-in could not be completed and allow the customer to try again.
 - Toggling password visibility repeatedly does not clear or alter the entered
   password.
+- Selecting Remember Me does not store or expose the customer's password.
+- A failed sign-in never creates a remembered authenticated session, even when
+  Remember Me is selected.
+- If Remember Me is not selected, the customer is not kept signed in beyond the
+  standard session.
 - At narrow viewport sizes, validation messages and links remain visible and do
   not obscure the form controls.
 
@@ -125,6 +158,11 @@ and verify all controls remain visible and usable.
 - **FR-010**: The page MUST remain readable and operable across mobile, tablet,
   and desktop viewport sizes without clipped content or unintended horizontal
   scrolling.
+- **FR-011**: The page MUST provide an optional Remember Me checkbox. When
+  selected and authentication succeeds, the customer MUST remain signed in on
+  that device for subsequent visits; when unselected, the standard sign-in
+  session MUST apply. A failed sign-in MUST NOT create a remembered session,
+  and the customer's password MUST NOT be stored as a result of this option.
 
 ### Key Entities
 
@@ -135,13 +173,16 @@ and verify all controls remain visible and usable.
   sign-in.
 - **Account journey link**: A destination for password recovery or new-account
   registration.
+- **Remember Me preference**: The customer's optional choice to retain an
+  authenticated sign-in on the device used to sign in.
 
 ## Success Criteria *(mandatory)*
 
 ### Measurable Outcomes
 
 - **SC-001**: All customers can identify the Email Address, Password, Login,
-  Forgot Password?, and Sign Up / Register controls on the login page.
+  Remember Me, Forgot Password?, and Sign Up / Register controls on the login
+  page.
 - **SC-002**: In validation checks, every missing required field and malformed
   email address is identified before a sign-in attempt is made.
 - **SC-003**: In validation checks, rejected credentials never grant access and
@@ -154,6 +195,10 @@ and verify all controls remain visible and usable.
 - **SC-006**: At least 90% of participants in a usability test can locate the
   sign-in controls and submit a login attempt without assistance in under one
   minute.
+- **SC-007**: In validation checks, successful sign-in with Remember Me
+  selected remains active on a subsequent visit on the same device, while
+  sign-in without it follows the standard session and failed sign-in never
+  establishes a remembered session.
 
 ## Assumptions
 
@@ -167,3 +212,6 @@ and verify all controls remain visible and usable.
   pixels wide, as well as tablet and desktop screens.
 - Successful sign-in proceeds to the retail application's normal authenticated
   destination.
+- Remember Me means an optional persistent sign-in on the same device, not
+  saving or pre-filling the customer's password. The retail application
+  determines the duration of its standard session and remembered sign-in.
