@@ -1,50 +1,62 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+<!--
+Sync Impact Report
+Version change: unratified template → 1.0.0
+Modified principles:
+- Template Principle 1 → I. Clean Code
+- Template Principle 2 → II. Simple UX
+- Template Principle 3 → III. Responsive Design
+Added sections: Additional Constraints; Development Workflow
+Removed sections: None
+Follow-up TODOs: Record the original ratification date when known.
+-->
+
+# Login App Demo Constitution
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### I. Clean Code
+Code MUST be readable, cohesive, and maintainable. Names MUST communicate intent;
+each module MUST have a clear responsibility; duplication and unnecessary
+complexity MUST be avoided. Changes MUST follow the repository's established
+patterns and pass the applicable lint, type-check, and test checks. These rules
+keep the application easy to change without introducing avoidable regressions.
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+### II. Simple UX
+User-facing flows MUST make their purpose and next action clear. Common tasks
+MUST use consistent, familiar controls and avoid unnecessary steps. The
+interface MUST provide understandable feedback for user actions, including
+validation errors and completed or failed operations. Simplicity reduces user
+effort and makes behavior predictable.
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+### III. Responsive Design
+Every user-facing page and interaction MUST remain usable across narrow mobile,
+tablet, and desktop viewports. Layouts MUST adapt to available space without
+unintended horizontal scrolling, clipped content, or controls that become
+unusable. Responsive behavior MUST be checked at representative viewport sizes
+when a UI change is made.
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+## Additional Constraints
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+The application MUST retain the framework, dependencies, and conventions
+already established by the repository unless a change is justified by the
+feature requirements. New dependencies and architectural complexity MUST be
+limited to what is necessary to meet those requirements.
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
+## Development Workflow
 
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
-
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
-
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+Changes MUST be reviewed against these principles before completion. UI changes
+MUST be checked at representative mobile and desktop viewport sizes. Relevant
+automated checks MUST be run for changed behavior, and any check that cannot
+be run MUST be identified in the change summary.
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
+This constitution governs project design and implementation decisions.
+Amendments MUST update this document, explain their impact, and receive review
+alongside the work they govern. The version follows semantic versioning:
+MAJOR for incompatible governance changes, MINOR for new or materially
+expanded principles or sections, and PATCH for clarifications and wording
+changes. Reviews MUST verify that changes comply with the principles and that
+relevant quality checks have been completed or explicitly reported.
 
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+**Version**: 1.0.0 | **Ratified**: TODO(RATIFICATION_DATE): original adoption date not recorded | **Last Amended**: 2026-10-09
